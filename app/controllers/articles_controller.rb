@@ -21,6 +21,8 @@ class ArticlesController < ApplicationController
     article = Article.find_by(id:params[:id])
     article.update!(article_params)
     render json: article,status: :ok
+  rescue ActiveRecord::RecordInvalid => invalid
+  render json: { errors: invalid.record.errors }, status: :unprocessable_entity
   end
 
   private 
