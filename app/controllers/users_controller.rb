@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index
     render json: User.all
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 end
 
 def update
-  user = User.find_by(id:params[:id])
+  user = User.find_by(id: params[:id])
   user.update!(user_param)
   render json: user,status: :ok
 end

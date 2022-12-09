@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :user
-  validates :strength, inclusion: { in: %w(Business Sports Travel), message: "must be one of Business,Sports,Travel"}
+  validates :category, inclusion: { in: %w(Business Sports Travel), message: "must be one of Business,Sports,Travel"}
   validates :title,presence: :true
   validates :category,presence: :true
   validates :content,presence: :true
